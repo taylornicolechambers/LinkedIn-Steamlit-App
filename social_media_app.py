@@ -17,9 +17,14 @@ def clean_sm(x):
         return 0
  
 ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age']].copy()
-ss = ss.rename(columns={'educ2': 'education'})
+ss = ss.rename(columns={'educ2': 'Education'})
+ss = ss.rename(columns={'income': 'Income'})
+ss = ss.rename(columns={'par': 'Parent'})
+ss = ss.rename(columns={'marital': 'Marital Status'})
+ss = ss.rename(columns={'gender': 'Gender'})
+ss = ss.rename(columns={'age': 'Age of User'})
 ss['sm_li'] = s['web1h'].apply(clean_sm)
-ss = ss[(ss['income'] <= 9) & (ss['education'] <= 8) & (ss['par'] <= 2) & ((ss['marital'] == 1) | (ss['marital'] == 6)) & (ss['age'] <= 98)].dropna()
+ss = ss[(ss['Income'] <= 9) & (ss['Education'] <= 8) & (ss['Parent'] <= 2) & ((ss['Marital Status'] == 1) | (ss['Marital Status'] == 6)) & (ss['Age of User'] <= 98)].dropna()
  
 y = ss['sm_li']
 X = ss.drop('sm_li', axis=1)
@@ -66,9 +71,9 @@ def main():
     scaler = load_scaler()
     # Display the user input features
     st.write("## User Input Features")
-    user_input = pd.DataFrame({'income': [income], 'education': [education], 'par': [1 if parent == "Yes" else 0],
-                               'marital': [1 if marital_status == "Married" else 0],
-                               'gender': [1 if gender == "Female" else 0], 'age': [age]})
+    user_input = pd.DataFrame({'Income': [Income], 'Education': [Education], 'Parent': [1 if parent == "Yes" else 0],
+                               'Marital Status': [1 if marital_status == "Married" else 0],
+                               'Gender': [1 if gender == "Female" else 0], 'age': [age]})
     st.table(user_input)
     # Load the model and make predictions
     model1 = load_model()
