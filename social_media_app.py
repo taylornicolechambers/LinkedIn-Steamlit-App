@@ -51,7 +51,7 @@ def predict_probability(features, scaler, model):
     probability = model.predict_proba(features_scaled)[:, 1]
     return probability
 def main():
-    st.title("LinkedInsight: App For Building Connections Between Your Data, and You.")
+    st.title("LinkedInsight: The App For Building Connections Between Your Data, and You.")
     st.markdown("""
             This app is trained using Logistic Regression to predict platform user
             probability by utilizing a users demographics and social attributes, 
