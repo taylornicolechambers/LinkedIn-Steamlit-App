@@ -71,7 +71,7 @@ def main():
     scaler = load_scaler()
     # Display the user input features
     st.write("## User Input Features")
-    user_input = pd.DataFrame({'income': [Income], 'education': [Education], 'par': [1 if Parent == "Yes" else 0],
+    user_input = pd.DataFrame({'income': [Income], 'education': [Education], 'par': [1 if parent == "Yes" else 0],
                                'marital': [1 if Marital_Status == "Married" else 0],
                                'gender': [1 if Gender == "Female" else 0], 'age': [Age]})
     st.table(user_input)
