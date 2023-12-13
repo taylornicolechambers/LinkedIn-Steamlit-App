@@ -45,13 +45,13 @@ def predict_probability(features, scaler, model):
     probability = model.predict_proba(features_scaled)[:, 1]
     return probability
 def main():
-    st.title("Insight-Tok: App Using In-Depth Data to Predict Your Profile Probability on the Short-Form Mobile Video App, TikTok.")
+    st.title("LinkedInsight: App For Building Connections Between Your Data, and You.")
     st.markdown("""
             This app is trained using Logistic Regression to predict platform user
             probability by utilizing a users demographics and social attributes, 
             like their age, income, education level, martital status, etc. 
             to predict the likelihood that an individual utilizing this app,
-            also has a TikTok profile i.e., is a TikTok user. 
+            also has a LinkedIn profile i.e., is a LinkedIn user. 
             """)
     # Sidebar with user input
     st.sidebar.header("User Input Features")
@@ -74,8 +74,8 @@ def main():
     probability = predict_probability(user_input, scaler, model1)
     # Display prediction results
     st.write("## Prediction")
-    st.write(f"Probability of being a TikTok user: {probability[0]:.2f}")
-    prediction = "TikTok User" if probability >= 0.5 else "Non-TikTok User"
+    st.write(f"Probability of being a LinkedIn user: {probability[0]:.2f}")
+    prediction = "LinkedIn User" if probability >= 0.5 else "Non-LinkedIn User"
     st.write(f"Prediction: {prediction}")
 if __name__ == '__main__':
     main()
