@@ -17,8 +17,9 @@ def clean_sm(x):
         return 0
  
 ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age']].copy()
+ss = ss.rename(columns={'educ2': 'education'})
 ss['sm_li'] = s['web1h'].apply(clean_sm)
-ss = ss[(ss['income'] <= 9) & (ss['educ2'] <= 8) & (ss['par'] <= 2) & ((ss['marital'] == 1) | (ss['marital'] == 6)) & (ss['age'] <= 98)].dropna()
+ss = ss[(ss['income'] <= 9) & (ss['education'] <= 8) & (ss['par'] <= 2) & ((ss['marital'] == 1) | (ss['marital'] == 6)) & (ss['age'] <= 98)].dropna()
  
 y = ss['sm_li']
 X = ss.drop('sm_li', axis=1)
@@ -65,7 +66,7 @@ def main():
     scaler = load_scaler()
     # Display the user input features
     st.write("## User Input Features")
-    user_input = pd.DataFrame({'income': [income], 'educ2': [education], 'par': [1 if parent == "Yes" else 0],
+    user_input = pd.DataFrame({'income': [income], 'education': [education], 'par': [1 if parent == "Yes" else 0],
                                'marital': [1 if marital_status == "Married" else 0],
                                'gender': [1 if gender == "Female" else 0], 'age': [age]})
     st.table(user_input)
