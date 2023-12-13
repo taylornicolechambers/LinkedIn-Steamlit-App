@@ -50,7 +50,7 @@ def main():
             This app is trained using Logistic Regression to predict platform user
             probability by utilizing a users demographics and social attributes, 
             like their age, income, education level, martital status, etc. 
-            to predict the likelihood that an individual utilizing the app
+            to predict the likelihood that an individual utilizing this app,
             also has a TikTok profile i.e., is a TikTok user. 
             """)
     # Sidebar with user input
